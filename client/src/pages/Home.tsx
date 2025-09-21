@@ -50,6 +50,11 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         {/* Hero Section */}
         <div className="flex flex-col justify-center text-center lg:text-left">
+          <div className="text-center mb-6">
+            <div className="font-cyber text-4xl font-bold neon-text">
+              ZapAid
+            </div>
+          </div>
           <div className="mb-8">
             <img 
               src="/attached_assets/generated_images/Futuristic_medical_aid_technology_10ad2d3e.png" 
