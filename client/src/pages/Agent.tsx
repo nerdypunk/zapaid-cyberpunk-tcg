@@ -86,6 +86,15 @@ export default function Agent() {
         </Badge>
       </div>
 
+      {/* AI Agent Image */}
+      <div className="mb-8 text-center">
+        <img 
+          src="/attached_assets/generated_images/AI_agent_digital_assistant_43dc069a.png" 
+          alt="AI Agent Digital Assistant" 
+          className="w-full max-w-2xl mx-auto h-48 object-cover rounded-lg border border-cyan-500/30 shadow-lg"
+        />
+      </div>
+
       {/* Scan Controls */}
       <Card className="mb-8">
         <CardHeader>

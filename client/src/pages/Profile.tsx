@@ -137,15 +137,18 @@ export default function Profile() {
                   Wallet: {profile.wallet === 'demo-guest' ? 'Demo Mode' : profile.wallet}
                 </p>
               </div>
-              <div className="flex gap-2">
-                <Button onClick={handleShare} variant="outline" size="sm" data-testid="button-share-profile">
-                  <Share className="w-4 h-4 mr-2" />
-                  Share
-                </Button>
-                <Button onClick={handleDownload} variant="outline" size="sm" data-testid="button-download-profile">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download
-                </Button>
+              <div className="text-right">
+                <p className="text-sm text-muted-foreground mb-2">Share your impact</p>
+                <div className="flex gap-2">
+                  <Button onClick={handleShare} variant="outline" size="sm" data-testid="button-share-profile">
+                    <Share className="w-4 h-4 mr-2" />
+                    Share
+                  </Button>
+                  <Button onClick={handleDownload} variant="outline" size="sm" data-testid="button-download-profile">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download
+                  </Button>
+                </div>
               </div>
             </div>
           </CardHeader>
@@ -179,6 +182,64 @@ export default function Profile() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Social Sharing Section */}
+      <Card className="mb-8 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border-cyan-500/20">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Share className="w-5 h-5" />
+            Share Your Impact
+          </CardTitle>
+          <p className="text-muted-foreground">
+            Show the world how you're making a difference with ZapAid!
+          </p>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Preview Image */}
+            <div>
+              <h4 className="font-semibold mb-3">Shareable Summary Preview</h4>
+              <div className="aspect-square bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-lg overflow-hidden">
+                <img 
+                  src="/attached_assets/generated_images/ZapAid_donation_summary_social_media_0e0ae8ff.png" 
+                  alt="Donation Summary Preview" 
+                  className="w-full h-full object-cover"
+                  data-testid="img-social-preview"
+                />
+              </div>
+            </div>
+            
+            {/* Share Actions */}
+            <div className="flex flex-col justify-center">
+              <h4 className="font-semibold mb-3">Share Options</h4>
+              <div className="space-y-3">
+                <Button 
+                  onClick={handleShare} 
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600" 
+                  data-testid="button-share-twitter"
+                >
+                  <Share className="w-4 h-4 mr-2" />
+                  Share on Twitter
+                </Button>
+                <Button 
+                  onClick={handleDownload} 
+                  variant="outline" 
+                  className="w-full border-cyan-500/50 hover:bg-cyan-500/10" 
+                  data-testid="button-download-image"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Image
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                Your contribution summary includes: Hero Score: {profile.heroScore}, 
+                Total Contributed: ${profile.totalContributed}, 
+                Missions Completed: {profile.missionsCompleted}
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Card Vault */}
       <Card>
