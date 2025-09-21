@@ -27,18 +27,20 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-cyber font-bold neon-text mb-4">
-          Be the Hero. Mint a Lifeline.
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while supporting real heroes.
-        </p>
-      </div>
+      {/* Hero + Mystery Pack Side by Side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        {/* Hero Section */}
+        <div className="flex flex-col justify-center text-center lg:text-left">
+          <h1 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-cyber font-bold neon-text mb-4">
+            Be the Hero. Mint a Lifeline.
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground">
+            Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while supporting real heroes.
+          </p>
+        </div>
 
-      {/* Random Pack Section */}
-      <div className="mb-16">
+        {/* Random Pack Section */}
+        <div>
         <Card className="bg-gradient-to-br from-yellow-900/20 via-orange-900/20 to-red-900/20 border-yellow-500/40 neon-border relative overflow-hidden">
           <div className="absolute inset-0 scanlines opacity-30 pointer-events-none" />
           <CardHeader className="text-center relative z-10">
@@ -93,6 +95,7 @@ export default function Home() {
             </p>
           </CardContent>
         </Card>
+        </div>
       </div>
 
       {/* Patient Cards Grid */}
