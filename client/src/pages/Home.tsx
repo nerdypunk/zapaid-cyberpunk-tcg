@@ -71,13 +71,6 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 rounded-lg p-6 mb-6">
-              <div className="flex justify-center mb-4">
-                <img 
-                  src="/attached_assets/generated_images/Collectible_card_deck_mystery_pack_2a92cd10.png" 
-                  alt="Mystery Card Pack" 
-                  className="w-24 h-32 object-cover rounded-lg border-2 border-yellow-400/60 shadow-lg"
-                />
-              </div>
               <div className="text-4xl font-bold neon-text mb-2">$15</div>
               <div className="text-sm text-muted-foreground mb-4">One-time purchase • 2 NFTs guaranteed</div>
               <Button 
