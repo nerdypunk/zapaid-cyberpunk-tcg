@@ -22,18 +22,18 @@ export default function Profile() {
   const [ownedSuperpowers] = useState([
     {
       id: "s1",
-      name: "Healing Surge",
-      blurb: "Channel regenerative energy to accelerate recovery",
+      name: "Healing Touch",
+      blurb: "Channel regenerative energy to accelerate patient recovery",
       rarity: "rare" as const,
-      image: "",
+      image: "@assets/generated_images/Healing_Touch_superpower_anime_c09ccc7c.png",
       earnedDate: "2025-01-10"
     },
     {
-      id: "s2", 
-      name: "Empathy Shield",
-      blurb: "Absorb emotional pain and transform it into protective energy",
+      id: "s4", 
+      name: "Comfort Aura",
+      blurb: "Emanate calming energy that soothes pain and anxiety",
       rarity: "common" as const,
-      image: "",
+      image: "@assets/generated_images/Comfort_Aura_superpower_anime_63af3497.png",
       earnedDate: "2025-01-08"
     }
   ]);
