@@ -50,33 +50,28 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         {/* Hero Section */}
         <div className="flex flex-col justify-center text-center lg:text-left">
-          <div className="mb-6">
+          <div className="mb-8">
             <img 
               src="/attached_assets/generated_images/Futuristic_medical_aid_technology_10ad2d3e.png" 
               alt="Futuristic Medical Aid Technology" 
-              className="w-full h-48 object-cover rounded-lg border border-cyan-500/30 shadow-lg"
+              className="w-full h-64 object-cover rounded-lg border border-cyan-500/30 shadow-lg"
             />
           </div>
-          <h1 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-cyber font-bold neon-text mb-4">
-            Be the Hero. Mint a Lifeline.
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-4">
-            Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while you become a hero supporting real patients.
-          </p>
-          <p className="text-sm text-cyan-400 font-semibold">
-            All proceeds go directly to patient medical aid.
-          </p>
+          <div className="space-y-4">
+            <h1 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-cyber font-bold neon-text">
+              Be the Hero. Mint a Lifeline.
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while you become a hero supporting real patients.
+            </p>
+            <p className="text-sm text-cyan-400 font-semibold">
+              All proceeds go directly to patient medical aid.
+            </p>
+          </div>
         </div>
 
         {/* Random Pack Section */}
         <div>
-          <div className="mb-6">
-            <img 
-              src="/attached_assets/generated_images/Mystery_pack_anime_cards_cyberpunk_2d9ddf06.png" 
-              alt="Mystery Pack Cards" 
-              className="w-full h-48 object-cover rounded-lg border border-yellow-500/30 shadow-lg"
-            />
-          </div>
         <Card className="bg-gradient-to-br from-yellow-900/20 via-orange-900/20 to-red-900/20 border-yellow-500/40 neon-border relative overflow-hidden">
           <div className="absolute inset-0 scanlines opacity-30 pointer-events-none" />
           <CardHeader className="text-center relative z-10">
