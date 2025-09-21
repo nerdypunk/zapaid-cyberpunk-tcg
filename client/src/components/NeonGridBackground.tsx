@@ -93,7 +93,7 @@ export default function NeonGridBackground() {
       drawGrid();
     } else {
       // Static grid for users who prefer reduced motion
-      ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+      ctx.strokeStyle = 'rgba(0, 255, 255, 0.3)';
       ctx.lineWidth = 1;
       const gridSize = 40;
       
@@ -121,7 +121,7 @@ export default function NeonGridBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 opacity-30"
+      className="fixed inset-0 -z-10 opacity-60"
       style={{ background: 'transparent' }}
     />
   );

@@ -25,7 +25,7 @@ export default function Home() {
           Be the Hero. Mint a Lifeline.
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Deploy aid to cyber-warriors in need. Every mint creates digital lifelines in the form of NFTs while supporting real heroes.
+          Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while supporting real heroes.
         </p>
       </div>
 
@@ -48,16 +48,16 @@ export default function Home() {
 
       {/* Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-        <div className="text-center p-6 rounded-lg bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20">
-          <div className="text-3xl font-bold text-primary mb-2">1,247</div>
+        <div className="text-center p-6 rounded-lg bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-purple-500/40 neon-border scanlines">
+          <div className="text-3xl font-bold neon-text mb-2">1,247</div>
           <div className="text-sm text-muted-foreground">Heroes Deployed</div>
         </div>
-        <div className="text-center p-6 rounded-lg bg-gradient-to-br from-blue-500/10 to-pink-500/10 border border-blue-500/20">
-          <div className="text-3xl font-bold text-primary mb-2">5,632</div>
+        <div className="text-center p-6 rounded-lg bg-gradient-to-br from-blue-900/30 to-pink-900/30 border border-blue-500/40 neon-border scanlines">
+          <div className="text-3xl font-bold neon-text mb-2">5,632</div>
           <div className="text-sm text-muted-foreground">NFTs Minted</div>
         </div>
-        <div className="text-center p-6 rounded-lg bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/20">
-          <div className="text-3xl font-bold text-primary mb-2">$892K</div>
+        <div className="text-center p-6 rounded-lg bg-gradient-to-br from-pink-900/30 to-purple-900/30 border border-pink-500/40 neon-border scanlines">
+          <div className="text-3xl font-bold neon-text mb-2">$892K</div>
           <div className="text-sm text-muted-foreground">Aid Deployed</div>
         </div>
       </div>

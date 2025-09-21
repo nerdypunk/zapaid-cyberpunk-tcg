@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -29,10 +30,15 @@ function Router() {
 }
 
 function App() {
+  // Force dark mode for cyberpunk theme
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-background text-foreground relative">
+        <div className="dark min-h-screen bg-background text-foreground relative">
           <NeonGridBackground />
           <div className="relative z-10">
             <Header />

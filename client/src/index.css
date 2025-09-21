@@ -350,7 +350,7 @@
 
   .neon-border {
     border: 1px solid hsl(var(--neon-cyan));
-    box-shadow: 0 0 10px hsl(var(--neon-cyan)), inset 0 0 10px hsl(var(--neon-cyan));
+    box-shadow: 0 0 20px hsl(var(--neon-cyan)/0.5), inset 0 0 20px hsl(var(--neon-cyan)/0.1);
   }
 
   .foil-effect {

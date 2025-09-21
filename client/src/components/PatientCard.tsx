@@ -27,9 +27,9 @@ interface PatientCardProps {
 }
 
 const rarityStyles = {
-  common: 'border-gray-400 bg-gradient-to-br from-gray-50 to-gray-100',
-  rare: 'border-blue-500 bg-gradient-to-br from-blue-50 to-purple-100',
-  legendary: 'border-yellow-500 bg-gradient-to-br from-yellow-50 to-orange-100 foil-effect'
+  common: 'border-gray-400 bg-gradient-to-br from-gray-900 to-gray-800',
+  rare: 'border-blue-500 bg-gradient-to-br from-blue-900/50 to-purple-900/50 neon-border',
+  legendary: 'border-yellow-500 bg-gradient-to-br from-yellow-900/50 to-orange-900/50 foil-effect neon-border'
 };
 
 const rarityColors = {
