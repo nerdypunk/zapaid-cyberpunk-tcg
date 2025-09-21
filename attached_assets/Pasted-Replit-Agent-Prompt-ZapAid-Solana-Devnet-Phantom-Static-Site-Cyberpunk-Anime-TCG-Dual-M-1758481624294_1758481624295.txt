@@ -1,0 +1,320 @@
+Replit Agent Prompt — ZapAid
+
+Solana Devnet • Phantom • Static Site • Cyberpunk + Anime TCG • Dual-Mint + Profile • Variable Contributions • Social Sharing • AI Agent • 4-Column Grids • Support Mints NFTs • Walletless Demo Mode
+
+Build a static, front-end-only trading card game (TCG) platform called ZapAid on Solana devnet.
+Users connect Phantom (also Backpack/Solflare). Each action is fully on-chain when Candy Machine IDs are set; otherwise a Demo Mode simulates results.
+Aesthetics: Cyberpunk + Anime TCG — neon grid, animated circuit lines, anime-style card art, foil rarity frames, glass panels.
+Output must be a static site (no server), suitable for Replit Deployments / Netlify / Vercel / GitHub Pages.
+
+Tech & Constraints
+
+Framework: Vite + React + TypeScript (SPA)
+
+Router: React Router with HashRouter (no server 404s)
+
+Styling: TailwindCSS (+ compact custom CSS utilities)
+
+Wallets: @solana/web3.js, @solana/wallet-adapter-react, @solana/wallet-adapter-react-ui with adapters for Phantom, Backpack, Solflare
+
+Minting: Metaplex Umi (Candy Machine v3); Demo Mode fallback (client-only)
+
+No backend; all client-side.
+
+Build outputs dist/.
+
+Walletless Demo Mode (NEW)
+
+If any Candy Machine ID is blank OR the user has no wallet connected, enable Demo Mode automatically.
+
+When no wallet is connected, use a guest profile with pubkey "demo-guest".
+
+All Demo mints/support actions persist to localStorage under "demo-guest"; when a real wallet connects later, it loads a separate profile (do not merge guest data).
+
+Buttons/flows must work without a wallet in Demo Mode (no “connect” blocker).
+
+UX & Copy (TCG + Superhero tone)
+
+Header tagline: “Be the Hero. Mint a Lifeline.”
+
+Patient cards show two actions:
+
+Mint — “Deploy Aid — from $10 (2 NFTs / $10)”
+
+Support — “Support — any amount (Badge + Patient cards)”
+
+Leaderboard: “Hall of Heroes”
+
+Profile: “Your Missions” + “Your Card Vault”
+
+AI tab: “Agent → Urgency Scan (Demo)”
+
+Actions (all on-chain when CMs set)
+A) Mint (Dual-Mint per $10)
+
+Variable contributions with min $10.
+
+For every $10 (a unit), mint:
+
+Superpower card (random) from VITE_CANDY_MACHINE_SUPERPOWER
+
+Patient card (specific tokenId) from VITE_CANDY_MACHINE_PATIENT
+
+Amount flow:
+
+USD_PER_UNIT = 10
+
+units = floor(amountUsd / 10) → perform units dual-mints (2 NFTs / unit)
+
+If leftoverUsd > 0, just summarize as “unallocated” (Support covers arbitrary amounts).
+
+Demo Mode: simulate units dual-mints with fake sigs/mints.
+
+Update Profile, Leaderboard, Recent Sponsors, patient progress.
+
+B) Support (Donation with NFTs, any amount ≥ $1)
+
+Any amount (chips: $5, $10, $25, $50, $100 + custom; min $1).
+
+Mints NFTs too:
+
+units = floor(amountUsd / 10) → mint units patient cards from VITE_CANDY_MACHINE_PATIENT (specific tokenId).
+
+Always mint 1 “Support Emblem” badge from VITE_CANDY_MACHINE_BADGE (configure price low/0 on devnet).
+
+Demo Mode: simulate patient card mints per unit + one Badge.
+
+Update Profile, Leaderboard (Hero Score: +1 per unit +1 per badge), Recent Sponsors, patient progress.
+
+AI Agent (Demo) — Urgency Scan
+
+Route: /agent
+
+Deterministic scoring (no LLM), labeled Demo Analysis:
+
+Remaining % to goal (lower remaining → higher score) — weight 0.40
+
+needSeverity (1–3) — weight 0.35
+
+timeWaitingDays — weight 0.25
+
++Keyword bump for critical terms (dialysis/chemo/insulin)
+
+Show Top 3 with bullet explanations + inline Mint/Support buttons.
+
+“Run Scan” shows a ~1.5s shimmer before results.
+
+Pages & Features
+
+Top Bar: neon “ZapAid” wordmark, Connect Wallet (WalletMultiButton), tiny pills for Devnet & Demo Mode, nav: Home, Superpowers, Leaderboard, Profile, Agent, Config.
+
+Home (/): 8 Patient cards, 4 per row on desktop (grid-cols-1 sm:grid-cols-2 lg:grid-cols-4).
+
+Anime TCG chrome: big card art, rarity frame, katakana-style name tag (optional), holo foil for legendary.
+
+Energy-style progress bar (raised/target).
+
+Mint section: amount input (min $10) + button.
+
+Support section: amount input (min $1) + button (mints badge + patient cards per $10).
+
+Superpowers (/superpowers): 8 Superpower cards, 4 per row; anime-style art; showcase only.
+
+Patient Detail (/patient/:id): full story, meter, Recent Sponsors, both Mint + Support sections.
+
+Leaderboard (/leaderboard): Hall of Heroes (identicons + Hero Score).
+
+Profile (/profile):
+
+Works for guest ("demo-guest") and real wallets.
+
+Your Missions (per patient counts + totals).
+
+Your Card Vault: tabs Superpowers, Patient Cards, Badges.
+
+Each item: rarity chip, timestamp, explorer link (real tx) or Demo badge.
+
+Share → generates PNG + Twitter intent.
+
+Agent (/agent): urgency scan (demo) with CTAs.
+
+Config (/config): env readout, Demo Mode toggle.
+
+Anime TCG Aesthetics (NEW emphasis)
+
+Palette: near-black, neon cyan, magenta, acid lime, violet, amber.
+
+Typography: Headings/logotype = Orbitron or Rajdhani; UI = Inter/Urbanist; add an anime display font (e.g., “Bangers” or “M PLUS 1p” for JP feel).
+
+Card Chrome: bold ink outlines, holographic foil for legendary, rarity emblems, small kanji/katakana label strip (optional).
+
+Effects: parallax/tilt on hover; scanlines overlay; subtle spark particles on success.
+
+Background: animated NeonGridBackground (canvas) — flowing neon circuit lines over a dim grid; disable with prefers-reduced-motion.
+
+Art: include anime-style placeholder images (pngs) for patients and superpowers. (Use original/safe placeholders in /assets/anime/….)
+
+Data & Rarity
+
+/src/data/patients.json → 8 entries with:
+{ id, name, city, story, targetUsd, raisedUsd, image, rarity, tokenId, needSeverity, timeWaitingDays }
+
+/src/data/superpowers.json → 8 entries with:
+{ id, name, blurb, rarity, image }
+
+/src/data/badges.json → 3–5 entries with:
+{ id, name, blurb, rarity, image }
+
+Rarity weights for Superpowers in Demo Mode: common 76%, rare 20%, legendary 4%.
+
+Social Sharing (client-side)
+
+Use html2canvas (or dom-to-image).
+
+SharePreview composition variants:
+
+Mint: Patient + Superpower side-by-side; wallet identicon; contributed amount; ZapAid frame + anime accents.
+
+Support: Patient + Badge; same framing.
+
+Buttons: Download PNG + Tweet (Twitter intent URL with preset copy + optional site link).
+
+File Structure (generate exactly)
+/index.html
+/src
+  /main.tsx
+  /app.tsx                   // HashRouter + layout + NeonGridBackground + SolanaProviders
+  /pages
+    Home.tsx
+    Superpowers.tsx
+    Patient.tsx
+    Leaderboard.tsx
+    Profile.tsx
+    Agent.tsx
+    Config.tsx
+  /components
+    WalletConnect.tsx
+    PatientCard.tsx          // anime TCG chrome + rarity + tilt + Mint + Support
+    SuperpowerCard.tsx
+    BadgeCard.tsx
+    MintAmount.tsx
+    SupportAmount.tsx
+    MintButton.tsx           // dual-mint batching (2 NFTs / $10)
+    SupportButton.tsx        // patient-only mints per $10 + 1 badge
+    BatchProgress.tsx
+    ProgressBar.tsx
+    Toast.tsx
+    SparkBurst.tsx
+    CardGrid.tsx
+    EmptyState.tsx
+    NeonGridBackground.tsx
+    ShareButton.tsx
+    SharePreview.tsx
+  /data
+    patients.json
+    superpowers.json
+    badges.json
+  /lib
+    solana.tsx               // ConnectionProvider + WalletProvider (Phantom/Backpack/Solflare)
+    mintCandyMachine.ts      // Umi CMv3 single mint helper
+    dualMint.ts              // Mint flow (Superpower -> Patient) per unit
+    supportMint.ts           // Support flow: patient-only per unit + 1 badge
+    demoMint.ts              // Simulated single mints (guest or real)
+    batchMint.ts             // Generic batch helper with progress events
+    storage.ts               // localStorage (per-wallet or "demo-guest")
+    rarity.ts                // labels/colors/weights
+    agent.ts                 // demo urgency scoring + explanations
+    share.ts                 // html2canvas wrapper for PNG export
+  /styles/index.css          // Tailwind + neon/foil/scanlines/anime utilities
+  /assets/scanlines.png
+  /assets/halftone.svg
+  /assets/anime/patients/...  // anime-style placeholder images
+  /assets/anime/superpowers/...
+  /assets/anime/badges/...
+/tailwind.config.js
+/postcss.config.js
+/tsconfig.json
+/vite.config.ts
+/.env.example
+/README.md
+
+.env.example
+VITE_SOLANA_CLUSTER=devnet
+VITE_RPC=https://api.devnet.solana.com
+
+# Candy Machines (set for on-chain; leave blank to auto-enable Demo Mode)
+VITE_CANDY_MACHINE_SUPERPOWER=
+VITE_CANDY_MACHINE_PATIENT=
+VITE_CANDY_MACHINE_BADGE=
+
+# Pricing display
+VITE_DISPLAY_PRICE_USD=10
+
+Key Implementation Notes
+Wallet Providers & Guest
+
+Provide Phantom/Backpack/Solflare via wallet-adapter.
+
+If no wallet connected OR any CM ID is blank, set Demo Mode true.
+
+When no wallet, use "demo-guest" as the active profile key in storage.
+
+Amount Handling
+
+Mint: units = floor(amountUsd/10); if units < 1, disable CTA (min $10).
+
+Support: any amount ≥ $1 → units = floor(amountUsd/10) patient mints + 1 badge.
+
+Batch Mint + Progress
+
+batchMint.ts loops units for Mint and Support; emits progress to BatchProgress.
+
+Demo Mode uses demoMint.ts to create fake sigs and “mint addresses”.
+
+Storage (localStorage)
+
+Keyed by wallet pubkey or "demo-guest".
+
+Keep arrays of mints (Superpowers, Patient Cards, Badges), patientsSupported tallies, Recent Sponsors per patient, and a global Leaderboard.
+
+AI Agent (Demo)
+
+agent.ts uses the weighted heuristic; return sorted list + explanation strings; UI shows Top 3 with inline CTAs.
+
+Anime TCG Styling
+
+Add utilities for ink outline, foil, neon glow, scanlines, and katakana label strip (styling only).
+
+Provide anime-style placeholder images in /assets/anime/....
+
+Social Sharing
+
+SharePreview builds a framed composite with anime accents; share.ts captures PNG; ShareButton offers Download + Tweet.
+
+4-Column Grids
+
+Use shared CardGrid with grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4; seed exactly 8 patients and 8 superpowers.
+
+Acceptance Criteria
+
+npm run dev → SPA runs; Phantom connects on devnet.
+
+If no wallet and/or CM IDs blank → Demo Mode (guest "demo-guest") where all flows work.
+
+Home: 8 Patient cards (4-column desktop) with Mint + Support sections.
+
+Superpowers: 8 cards (4-column desktop).
+
+Mint: variable amount (min $10) → batched dual mints (real or demo) with progress UI; updates Profile/Leaderboard/Sponsors/progress; explorer links for real tx.
+
+Support: any amount (min $1) → mints units Patient cards + 1 Badge (real or demo); updates all views; explorer links for real tx.
+
+Agent: runs Urgency Scan (demo) with ranked patients & inline CTAs.
+
+Profile: works for guest + real wallets; shows Your Missions + Card Vault (Superpowers, Patient Cards, Badges) with Share (PNG + Tweet).
+
+Anime TCG visuals (foil/glow/ink outline), cyberpunk animated background, and tilt/parallax present.
+
+npm run build → dist/ static site works on Replit Deployments/Netlify/Vercel.
+
+README covers: Phantom devnet + faucet, the 3 Candy Machines, Demo Mode + guest profile, Mint vs Support semantics, AI Agent demo logic, anime assets, social sharing, 4-col grids, and deploy steps.
