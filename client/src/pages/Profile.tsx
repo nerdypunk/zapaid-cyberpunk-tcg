@@ -104,12 +104,22 @@ export default function Profile() {
 
   const handleShare = () => {
     console.log('Share profile triggered');
-    // todo: implement PNG generation and Twitter sharing
+    // Open Twitter share with pre-filled text
+    const shareText = `🚀 Just made a difference on @ZapAid! 💫\n\n💰 $${profile.totalContributed} contributed to medical aid\n❤️ ${profile.missionsCompleted} patients helped\n🎯 Hero Score: ${profile.heroScore}\n\n#ZapAid #CryptoForGood #NFTsForCause #BeTheHero`;
+    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+    window.open(shareUrl, '_blank');
   };
 
   const handleDownload = () => {
     console.log('Download profile image triggered');
-    // todo: implement PNG download functionality
+    // Download the pre-generated donation summary image
+    const imageUrl = '/attached_assets/generated_images/ZapAid_donation_summary_social_media_0e0ae8ff.png';
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `ZapAid_Donation_Summary_${new Date().toISOString().split('T')[0]}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
