@@ -57,19 +57,28 @@ export default function SuperpowerCard({ superpower }: SuperpowerCardProps) {
 
       <CardContent className="space-y-4">
         <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30">
-          <div className="w-full h-full bg-gradient-to-br from-purple-500/40 to-blue-500/40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <div className="relative">
-                <Zap className="mx-auto mb-2 w-12 h-12 neon-glow" />
-                {superpower.rarity === 'legendary' && (
-                  <div className="absolute inset-0 pulse-neon">
-                    <Zap className="mx-auto mb-2 w-12 h-12" />
-                  </div>
-                )}
+          {superpower.image ? (
+            <img 
+              src={superpower.image.replace('@assets', '/attached_assets')} 
+              alt={superpower.name}
+              className="w-full h-full object-cover"
+              data-testid={`img-superpower-${superpower.id}`}
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-purple-500/40 to-blue-500/40 flex items-center justify-center">
+              <div className="text-center text-white">
+                <div className="relative">
+                  <Zap className="mx-auto mb-2 w-12 h-12 neon-glow" />
+                  {superpower.rarity === 'legendary' && (
+                    <div className="absolute inset-0 pulse-neon">
+                      <Zap className="mx-auto mb-2 w-12 h-12" />
+                    </div>
+                  )}
+                </div>
+                <p className="text-sm font-anime uppercase tracking-wider">SUPERPOWER</p>
               </div>
-              <p className="text-sm font-anime uppercase tracking-wider">SUPERPOWER</p>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="space-y-2">
