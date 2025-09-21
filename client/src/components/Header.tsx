@@ -31,13 +31,13 @@ export default function Header() {
   };
 
   return (
-    <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+    <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 cyber-grid">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer" data-testid="link-home">
-              <div className="font-cyber text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+              <div className="font-cyber text-2xl font-bold neon-text">
                 ZapAid
               </div>
             </div>

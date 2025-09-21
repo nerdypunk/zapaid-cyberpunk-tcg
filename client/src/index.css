@@ -14,17 +14,17 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 240 10% 98%;
+  --background: 240 20% 6%;
 
-  --foreground: 240 15% 15%;
+  --foreground: 0 0% 95%;
 
-  --border: 240 8% 88%;
+  --border: 240 12% 18%;
 
-  --card: 0 0% 100%;
+  --card: 240 15% 8%;
 
-  --card-foreground: 240 15% 15%;
+  --card-foreground: 0 0% 95%;
 
-  --card-border: 240 5% 92%;
+  --card-border: 240 12% 20%;
 
   --sidebar: 240 8% 96%;
 
@@ -74,7 +74,7 @@
 
   --destructive-foreground: 0 0% 98%;
 
-  --input: 240 8% 85%;
+  --input: 240 12% 15%;
   --ring: 270 85% 35%;
   --chart-1: 270 85% 35%;
   --chart-2: 210 100% 30%;
@@ -341,7 +341,16 @@
 
   /* Cyberpunk animations and effects */
   .neon-glow {
-    filter: drop-shadow(0 0 10px hsl(var(--neon-cyan)));
+    filter: drop-shadow(0 0 15px hsl(var(--neon-cyan))) drop-shadow(0 0 30px hsl(var(--neon-cyan)));
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--neon-cyan)), 0 0 20px hsl(var(--neon-cyan)), 0 0 30px hsl(var(--neon-cyan));
+  }
+
+  .neon-border {
+    border: 1px solid hsl(var(--neon-cyan));
+    box-shadow: 0 0 10px hsl(var(--neon-cyan)), inset 0 0 10px hsl(var(--neon-cyan));
   }
 
   .foil-effect {
@@ -364,9 +373,16 @@
   .scanlines {
     background-image: linear-gradient(
       transparent 50%,
-      rgba(0, 255, 255, 0.03) 50%
+      rgba(0, 255, 255, 0.08) 50%
     );
-    background-size: 100% 4px;
+    background-size: 100% 2px;
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 
   @keyframes foil-shimmer {

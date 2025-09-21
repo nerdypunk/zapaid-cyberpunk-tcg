@@ -21,7 +21,7 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-cyber font-bold bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl md:text-6xl font-cyber font-bold neon-text mb-4">
           Be the Hero. Mint a Lifeline.
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -35,7 +35,7 @@ export default function Home() {
           Current Missions
         </h2>
         <CardGrid>
-          {patients.map((patient) => (
+          {patients.map((patient: any) => (
             <PatientCard
               key={patient.id}
               patient={patient}

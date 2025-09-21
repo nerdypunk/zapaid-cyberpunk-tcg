@@ -75,13 +75,25 @@ export default function PatientCard({ patient, onMint, onSupport }: PatientCardP
       </CardHeader>
 
       <CardContent className="space-y-4">
-        <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-br from-purple-900/20 to-blue-900/20">
-          <div className="w-full h-full bg-gradient-to-br from-purple-500/30 to-blue-500/30 flex items-center justify-center">
+        <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-br from-purple-900/20 to-blue-900/20 relative">
+          <img 
+            src={patient.image.replace('@assets/', '/attached_assets/')} 
+            alt={patient.name}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              // Fallback to placeholder if image fails to load
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              target.parentElement!.querySelector('.fallback-content')!.classList.remove('hidden');
+            }}
+          />
+          <div className="fallback-content hidden w-full h-full bg-gradient-to-br from-purple-500/30 to-blue-500/30 flex items-center justify-center absolute inset-0">
             <div className="text-center text-white">
-              <Zap className="mx-auto mb-2 w-8 h-8" />
-              <p className="text-sm font-anime">NEURAL INTERFACE</p>
+              <Heart className="mx-auto mb-2 w-8 h-8" />
+              <p className="text-sm font-anime">PATIENT CARE</p>
             </div>
           </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         </div>
 
         <p className="text-sm text-muted-foreground line-clamp-3" data-testid={`text-story-${patient.id}`}>

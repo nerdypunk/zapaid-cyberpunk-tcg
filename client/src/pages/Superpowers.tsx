@@ -22,7 +22,7 @@ export default function Superpowers() {
       {/* Superpowers Grid */}
       <div className="mb-8">
         <CardGrid>
-          {superpowers.map((superpower) => (
+          {superpowers.map((superpower: any) => (
             <SuperpowerCard
               key={superpower.id}
               superpower={superpower}
