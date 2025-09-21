@@ -1,0 +1,58 @@
+[
+  {
+    "id": "s1",
+    "name": "Neural Hack",
+    "blurb": "Penetrate digital defenses with pure thought",
+    "rarity": "rare",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s2", 
+    "name": "Data Stream",
+    "blurb": "Channel raw information into devastating attacks",
+    "rarity": "common",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s3",
+    "name": "Quantum Leap",
+    "blurb": "Phase through digital barriers using quantum mechanics",
+    "rarity": "legendary",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s4",
+    "name": "Cyber Shield",
+    "blurb": "Project impenetrable digital barriers",
+    "rarity": "common",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s5",
+    "name": "Memory Forge",
+    "blurb": "Reconstruct and manipulate digital memories",
+    "rarity": "rare",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s6",
+    "name": "Code Storm",
+    "blurb": "Unleash cascading programming attacks",
+    "rarity": "legendary",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s7",
+    "name": "Firewall",
+    "blurb": "Create adaptive security protocols",
+    "rarity": "common",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  },
+  {
+    "id": "s8",
+    "name": "Digital Phoenix",
+    "blurb": "Rise from system crashes stronger than before",
+    "rarity": "legendary",
+    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+  }
+]

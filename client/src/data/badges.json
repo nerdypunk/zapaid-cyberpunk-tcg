@@ -1,0 +1,23 @@
+[
+  {
+    "id": "b1",
+    "name": "Hero's Heart",
+    "blurb": "Awarded to those who support the cause",
+    "rarity": "common",
+    "image": "@assets/generated_images/Support_badge_emblem_design_cc1fca2f.png"
+  },
+  {
+    "id": "b2",
+    "name": "Guardian Angel",
+    "blurb": "Protector of the digital realm",
+    "rarity": "rare", 
+    "image": "@assets/generated_images/Support_badge_emblem_design_cc1fca2f.png"
+  },
+  {
+    "id": "b3",
+    "name": "Cyber Savior",
+    "blurb": "Ultimate champion of the cause",
+    "rarity": "legendary",
+    "image": "@assets/generated_images/Support_badge_emblem_design_cc1fca2f.png"
+  }
+]
