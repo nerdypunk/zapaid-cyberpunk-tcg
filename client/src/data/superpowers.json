@@ -1,58 +1,58 @@
 [
   {
     "id": "s1",
-    "name": "Neural Hack",
-    "blurb": "Penetrate digital defenses with pure thought",
+    "name": "Healing Touch",
+    "blurb": "Channel regenerative energy to accelerate patient recovery",
     "rarity": "rare",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Healing_Touch_superpower_anime.png"
   },
   {
     "id": "s2", 
-    "name": "Data Stream",
-    "blurb": "Channel raw information into devastating attacks",
+    "name": "Empathy Shield",
+    "blurb": "Absorb emotional pain and transform it into protective energy",
     "rarity": "common",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Empathy_Shield_superpower_anime.png"
   },
   {
     "id": "s3",
-    "name": "Quantum Leap",
-    "blurb": "Phase through digital barriers using quantum mechanics",
+    "name": "Life Restoration",
+    "blurb": "Miraculously restore damaged organs and tissues",
     "rarity": "legendary",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Life_Restoration_superpower_anime.png"
   },
   {
     "id": "s4",
-    "name": "Cyber Shield",
-    "blurb": "Project impenetrable digital barriers",
+    "name": "Comfort Aura",
+    "blurb": "Emanate calming energy that soothes pain and anxiety",
     "rarity": "common",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Comfort_Aura_superpower_anime.png"
   },
   {
     "id": "s5",
-    "name": "Memory Forge",
-    "blurb": "Reconstruct and manipulate digital memories",
+    "name": "Hope Infusion",
+    "blurb": "Instill unbreakable determination and will to recover",
     "rarity": "rare",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Hope_Infusion_superpower_anime.png"
   },
   {
     "id": "s6",
-    "name": "Code Storm",
-    "blurb": "Unleash cascading programming attacks",
+    "name": "Miracle Surge",
+    "blurb": "Unleash extraordinary healing beyond medical limitations",
     "rarity": "legendary",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Miracle_Surge_superpower_anime.png"
   },
   {
     "id": "s7",
-    "name": "Firewall",
-    "blurb": "Create adaptive security protocols",
+    "name": "Vital Boost",
+    "blurb": "Enhance immune system and natural healing processes",
     "rarity": "common",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Vital_Boost_superpower_anime.png"
   },
   {
     "id": "s8",
-    "name": "Digital Phoenix",
-    "blurb": "Rise from system crashes stronger than before",
+    "name": "Phoenix Recovery",
+    "blurb": "Rise from critical conditions stronger than before",
     "rarity": "legendary",
-    "image": "@assets/generated_images/Energy_manipulation_superpower_card_b5951d31.png"
+    "image": "@assets/generated_images/Phoenix_Recovery_superpower_anime.png"
   }
 ]
