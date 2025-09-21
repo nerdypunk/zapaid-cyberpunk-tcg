@@ -50,8 +50,8 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         {/* Hero Section */}
         <div className="flex flex-col justify-center text-center lg:text-left">
-          <div className="text-center mb-6">
-            <div className="font-cyber text-4xl font-bold neon-text">
+          <div className="text-center mb-8">
+            <div className="font-cyber text-6xl md:text-7xl font-bold neon-text">
               ZapAid
             </div>
           </div>

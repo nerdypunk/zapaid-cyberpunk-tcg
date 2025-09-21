@@ -6,10 +6,10 @@ import { Link, useLocation } from 'wouter';
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'Agent', href: '/agent' },
   { name: 'Superpowers', href: '/superpowers' },
   { name: 'Leaderboard', href: '/leaderboard' },
   { name: 'Profile', href: '/profile' },
-  { name: 'Agent', href: '/agent' },
   { name: 'Config', href: '/config' }
 ];
 
@@ -45,21 +45,24 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navigation.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <Button
-                  variant={location === item.href ? "default" : "ghost"}
-                  size="sm"
-                  className="relative"
-                  data-testid={`link-${item.name.toLowerCase()}`}
-                >
-                  {item.name}
-                  {location === item.href && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
-                  )}
-                </Button>
-              </Link>
-            ))}
+            {navigation.map((item) => {
+              const isAgent = item.name === 'Agent';
+              return (
+                <Link key={item.name} href={item.href}>
+                  <Button
+                    variant={location === item.href ? "default" : (isAgent ? "default" : "ghost")}
+                    size="sm"
+                    className={`relative ${isAgent ? 'bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold border border-cyan-400' : ''}`}
+                    data-testid={`link-${item.name.toLowerCase()}`}
+                  >
+                    {item.name}
+                    {location === item.href && (
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                    )}
+                  </Button>
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Status Pills & Actions */}
@@ -121,18 +124,21 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-2">
-              {navigation.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <Button
-                    variant={location === item.href ? "default" : "ghost"}
-                    className="w-full justify-start"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-testid={`mobile-link-${item.name.toLowerCase()}`}
-                  >
-                    {item.name}
-                  </Button>
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                const isAgent = item.name === 'Agent';
+                return (
+                  <Link key={item.name} href={item.href}>
+                    <Button
+                      variant={location === item.href ? "default" : (isAgent ? "default" : "ghost")}
+                      className={`w-full justify-start ${isAgent ? 'bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold border border-cyan-400' : ''}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      data-testid={`mobile-link-${item.name.toLowerCase()}`}
+                    >
+                      {item.name}
+                    </Button>
+                  </Link>
+                );
+              })}
               
               {/* Mobile Wallet Button */}
               <Button
