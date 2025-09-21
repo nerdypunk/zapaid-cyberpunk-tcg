@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NeonGridBackground from "@/components/NeonGridBackground";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import Superpowers from "@/pages/Superpowers";
 import Leaderboard from "@/pages/Leaderboard";
@@ -45,6 +46,7 @@ function App() {
             <main>
               <Router />
             </main>
+            <Footer />
           </div>
         </div>
         <Toaster />
