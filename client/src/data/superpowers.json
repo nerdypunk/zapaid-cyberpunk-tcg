@@ -4,55 +4,55 @@
     "name": "Healing Touch",
     "blurb": "Channel regenerative energy to accelerate patient recovery",
     "rarity": "rare",
-    "image": "@assets/generated_images/Healing_Touch_superpower_anime.png"
+    "image": "@assets/generated_images/Healing_Touch_superpower_anime_c09ccc7c.png"
   },
   {
     "id": "s2", 
     "name": "Empathy Shield",
     "blurb": "Absorb emotional pain and transform it into protective energy",
     "rarity": "common",
-    "image": "@assets/generated_images/Empathy_Shield_superpower_anime.png"
+    "image": "@assets/generated_images/Empathy_Shield_superpower_anime_9790822f.png"
   },
   {
     "id": "s3",
     "name": "Life Restoration",
     "blurb": "Miraculously restore damaged organs and tissues",
     "rarity": "legendary",
-    "image": "@assets/generated_images/Life_Restoration_superpower_anime.png"
+    "image": "@assets/generated_images/Life_Restoration_superpower_anime_ea35bf19.png"
   },
   {
     "id": "s4",
     "name": "Comfort Aura",
     "blurb": "Emanate calming energy that soothes pain and anxiety",
     "rarity": "common",
-    "image": "@assets/generated_images/Comfort_Aura_superpower_anime.png"
+    "image": "@assets/generated_images/Comfort_Aura_superpower_anime_63af3497.png"
   },
   {
     "id": "s5",
     "name": "Hope Infusion",
     "blurb": "Instill unbreakable determination and will to recover",
     "rarity": "rare",
-    "image": "@assets/generated_images/Hope_Infusion_superpower_anime.png"
+    "image": "@assets/generated_images/Hope_Infusion_superpower_anime_64dcee2c.png"
   },
   {
     "id": "s6",
     "name": "Miracle Surge",
     "blurb": "Unleash extraordinary healing beyond medical limitations",
     "rarity": "legendary",
-    "image": "@assets/generated_images/Miracle_Surge_superpower_anime.png"
+    "image": "@assets/generated_images/Miracle_Surge_superpower_anime_4595d19e.png"
   },
   {
     "id": "s7",
     "name": "Vital Boost",
     "blurb": "Enhance immune system and natural healing processes",
     "rarity": "common",
-    "image": "@assets/generated_images/Vital_Boost_superpower_anime.png"
+    "image": "@assets/generated_images/Vital_Boost_superpower_anime_127491ce.png"
   },
   {
     "id": "s8",
     "name": "Phoenix Recovery",
     "blurb": "Rise from critical conditions stronger than before",
     "rarity": "legendary",
-    "image": "@assets/generated_images/Phoenix_Recovery_superpower_anime.png"
+    "image": "@assets/generated_images/Phoenix_Recovery_superpower_anime_fd52fdbf.png"
   }
 ]

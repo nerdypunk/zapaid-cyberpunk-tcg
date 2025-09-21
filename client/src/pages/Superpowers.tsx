@@ -12,10 +12,10 @@ export default function Superpowers() {
       {/* Hero Section */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-cyber font-bold bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 bg-clip-text text-transparent mb-4">
-          Superpower Arsenal
+          Healing Powers Arsenal
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Discover the legendary abilities that power our cyber-heroes. Each superpower NFT grants unique digital capabilities.
+          Discover the miraculous abilities that empower caregivers and healers. Each superpower NFT grants unique healing capabilities to support those in need.
         </p>
       </div>
 
