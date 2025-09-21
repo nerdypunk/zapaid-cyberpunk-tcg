@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import CardGrid from '@/components/CardGrid';
 import PatientCard from '@/components/PatientCard';
+import DemoThankYouModal from '@/components/DemoThankYouModal';
 import patientsData from '@/data/patients.json';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Gift, Zap, Heart, Stars } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
 
 export default function Home() {
   // todo: remove mock functionality - replace with real wallet and minting
   const [patients] = useState(patientsData as any);
   const [walletAddress] = useState('demo-guest'); // Simulating demo mode
-  const { toast } = useToast();
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+  const [modalData, setModalData] = useState<{
+    type: 'mint' | 'support' | 'mystery';
+    details: { patientName?: string; superpowerName?: string; amount?: number; };
+  }>({ type: 'mystery', details: {} });
   
   const isDemoMode = walletAddress === 'demo-guest';
 
@@ -37,11 +41,15 @@ export default function Home() {
     const superpowers = ['Healing Touch', 'Empathy Shield', 'Hope Beacon', 'Recovery Boost', 'Comfort Aura'];
     const randomSuperpower = superpowers[Math.floor(Math.random() * superpowers.length)];
     
-    toast({
-      title: "Mystery Pack Opened! (Demo)",
-      description: `You received: ${randomPatient.name} Patient Card + ${randomSuperpower} Superpower Card`,
-      duration: 5000,
+    setModalData({
+      type: 'mystery',
+      details: {
+        patientName: randomPatient.name,
+        superpowerName: randomSuperpower,
+        amount: 15
+      }
     });
+    setShowThankYouModal(true);
   };
 
   return (
@@ -145,6 +153,14 @@ export default function Home() {
           ))}
         </CardGrid>
       </div>
+
+      {/* Demo Thank You Modal */}
+      <DemoThankYouModal
+        isOpen={showThankYouModal}
+        onClose={() => setShowThankYouModal(false)}
+        type={modalData.type}
+        details={modalData.details}
+      />
 
       {/* Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">

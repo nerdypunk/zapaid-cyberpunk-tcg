@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Heart, Zap } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import DemoThankYouModal from '@/components/DemoThankYouModal';
 
 interface Patient {
   id: string;
@@ -43,7 +43,11 @@ const rarityColors = {
 export default function PatientCard({ patient, isDemoMode = false, onMint, onSupport }: PatientCardProps) {
   const [mintAmount, setMintAmount] = useState(10);
   const [supportAmount, setSupportAmount] = useState(5);
-  const { toast } = useToast();
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+  const [modalData, setModalData] = useState<{
+    type: 'mint' | 'support' | 'mystery';
+    details: { patientName?: string; superpowerName?: string; amount?: number; };
+  }>({ type: 'mint', details: {} });
   
   const progressPercentage = (patient.raisedUsd / patient.targetUsd) * 100;
 
@@ -58,11 +62,15 @@ export default function PatientCard({ patient, isDemoMode = false, onMint, onSup
     const superpowers = ['Healing Touch', 'Empathy Shield', 'Hope Beacon', 'Recovery Boost', 'Comfort Aura'];
     const randomSuperpower = superpowers[Math.floor(Math.random() * superpowers.length)];
     
-    toast({
-      title: "NFTs Minted! (Demo)",
-      description: `Successfully minted: ${patient.name} Patient Card + ${randomSuperpower} Superpower Card for $${mintAmount}`,
-      duration: 5000,
+    setModalData({
+      type: 'mint',
+      details: {
+        patientName: patient.name,
+        superpowerName: randomSuperpower,
+        amount: mintAmount
+      }
     });
+    setShowThankYouModal(true);
   };
 
   const handleSupport = () => {
@@ -73,11 +81,14 @@ export default function PatientCard({ patient, isDemoMode = false, onMint, onSup
     }
     
     // Demo mode result
-    toast({
-      title: "Support Sent! (Demo)", 
-      description: `Successfully supported ${patient.name} with $${supportAmount}. You received a Hero Badge!`,
-      duration: 5000,
+    setModalData({
+      type: 'support',
+      details: {
+        patientName: patient.name,
+        amount: supportAmount
+      }
     });
+    setShowThankYouModal(true);
   };
 
   return (
@@ -193,6 +204,14 @@ export default function PatientCard({ patient, isDemoMode = false, onMint, onSup
           <p className="text-xs text-muted-foreground">Any amount • Badge + Patient cards</p>
         </div>
       </CardContent>
+      
+      {/* Demo Thank You Modal */}
+      <DemoThankYouModal
+        isOpen={showThankYouModal}
+        onClose={() => setShowThankYouModal(false)}
+        type={modalData.type}
+        details={modalData.details}
+      />
     </Card>
   );
 }
