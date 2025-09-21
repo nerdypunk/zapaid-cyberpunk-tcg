@@ -30,7 +30,6 @@ A revolutionary trading card game platform built on Solana devnet that combines 
 
 ### Installation
 1. Clone the repository:
-```bash
 git clone https://github.com/nerdypunk/zapaid-cyberpunk-tcg.git
 cd zapaid-cyberpunk-tcg
 Install dependencies:
