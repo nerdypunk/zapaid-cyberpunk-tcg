@@ -156,9 +156,15 @@ export default function Agent() {
             const urgencyColor = result.urgencyScore >= 80 ? 'red' : result.urgencyScore >= 60 ? 'yellow' : 'green';
             const progressPercentage = (patient.raisedUsd / patient.targetUsd) * 100;
             
+            const colorClasses = {
+              red: { bar: 'bg-red-500', text: 'text-red-500' },
+              yellow: { bar: 'bg-yellow-500', text: 'text-yellow-500' },
+              green: { bar: 'bg-green-500', text: 'text-green-500' }
+            };
+            
             return (
               <Card key={result.patientId} className="relative overflow-hidden">
-                <div className={`absolute left-0 top-0 w-1 h-full bg-${urgencyColor}-500`} />
+                <div className={`absolute left-0 top-0 w-1 h-full ${colorClasses[urgencyColor].bar}`} />
                 
                 <CardHeader>
                   <div className="flex justify-between items-start">
@@ -172,7 +178,7 @@ export default function Agent() {
                       <p className="text-sm text-muted-foreground">{patient.city}</p>
                     </div>
                     <div className="text-right">
-                      <div className={`text-2xl font-bold text-${urgencyColor}-500`} data-testid={`text-urgency-score-${result.patientId}`}>
+                      <div className={`text-2xl font-bold ${colorClasses[urgencyColor].text}`} data-testid={`text-urgency-score-${result.patientId}`}>
                         {result.urgencyScore.toFixed(1)}%
                       </div>
                       <div className="text-xs text-muted-foreground">Urgency Score</div>

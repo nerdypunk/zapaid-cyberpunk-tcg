@@ -105,7 +105,7 @@ export default function Profile() {
   const handleShare = () => {
     console.log('Share profile triggered');
     // Open Twitter share with pre-filled text
-    const shareText = `🚀 Just made a difference on @ZapAid! 💫\n\n💰 $${profile.totalContributed} contributed to medical aid\n❤️ ${profile.missionsCompleted} patients helped\n🎯 Hero Score: ${profile.heroScore}\n\n#ZapAid #CryptoForGood #NFTsForCause #BeTheHero`;
+    const shareText = `Just made a difference on ZapAid!\n\n$${profile.totalContributed} contributed to medical aid\n${profile.missionsCompleted} patients helped\nHero Score: ${profile.heroScore}\n\n#ZapAid #CryptoForGood #NFTsForCause #BeTheHero`;
     const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
     window.open(shareUrl, '_blank');
   };
