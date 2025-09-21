@@ -5,10 +5,15 @@ import patientsData from '@/data/patients.json';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Gift, Zap, Heart, Stars } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Home() {
   // todo: remove mock functionality - replace with real wallet and minting
   const [patients] = useState(patientsData as any);
+  const [walletAddress] = useState('demo-guest'); // Simulating demo mode
+  const { toast } = useToast();
+  
+  const isDemoMode = walletAddress === 'demo-guest';
 
   const handleMint = (patientId: string, amount: number) => {
     console.log(`Mint action for patient ${patientId} with amount $${amount}`);
@@ -21,8 +26,22 @@ export default function Home() {
   };
 
   const handleRandomPack = () => {
-    console.log('Random pack purchase triggered for $15');
-    // todo: implement random pack functionality - random patient + random superpower
+    if (!isDemoMode) {
+      console.log('Random pack purchase triggered for $15');
+      // todo: implement real random pack functionality - random patient + random superpower
+      return;
+    }
+    
+    // Demo mode result
+    const randomPatient = patients[Math.floor(Math.random() * patients.length)];
+    const superpowers = ['Healing Touch', 'Empathy Shield', 'Hope Beacon', 'Recovery Boost', 'Comfort Aura'];
+    const randomSuperpower = superpowers[Math.floor(Math.random() * superpowers.length)];
+    
+    toast({
+      title: "Mystery Pack Opened! (Demo)",
+      description: `You received: ${randomPatient.name} Patient Card + ${randomSuperpower} Superpower Card`,
+      duration: 5000,
+    });
   };
 
   return (
@@ -42,7 +61,7 @@ export default function Home() {
             Be the Hero. Mint a Lifeline.
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-4">
-            Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while supporting real heroes.
+            Deploy aid to those in need. Every mint creates digital lifelines in the form of NFTs while you become a hero supporting real patients.
           </p>
           <p className="text-sm text-cyan-400 font-semibold">
             All proceeds go directly to patient medical aid.
@@ -51,6 +70,13 @@ export default function Home() {
 
         {/* Random Pack Section */}
         <div>
+          <div className="mb-6">
+            <img 
+              src="/attached_assets/generated_images/Mystery_pack_anime_cards_cyberpunk_2d9ddf06.png" 
+              alt="Mystery Pack Cards" 
+              className="w-full h-48 object-cover rounded-lg border border-yellow-500/30 shadow-lg"
+            />
+          </div>
         <Card className="bg-gradient-to-br from-yellow-900/20 via-orange-900/20 to-red-900/20 border-yellow-500/40 neon-border relative overflow-hidden">
           <div className="absolute inset-0 scanlines opacity-30 pointer-events-none" />
           <CardHeader className="text-center relative z-10">
@@ -85,8 +111,9 @@ export default function Home() {
               <div className="text-sm text-muted-foreground mb-4">One-time purchase • 2 NFTs guaranteed</div>
               <Button 
                 onClick={handleRandomPack}
+                disabled={!isDemoMode}
                 size="lg"
-                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold px-8 py-3 text-lg border-2 border-yellow-400"
+                className={`bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold px-8 py-3 text-lg border-2 border-yellow-400 ${!isDemoMode ? 'opacity-50 cursor-not-allowed' : ''}`}
                 data-testid="button-random-pack"
               >
                 <Gift className="w-5 h-5 mr-2" />
@@ -111,6 +138,7 @@ export default function Home() {
             <PatientCard
               key={patient.id}
               patient={patient}
+              isDemoMode={isDemoMode}
               onMint={(amount) => handleMint(patient.id, amount)}
               onSupport={(amount) => handleSupport(patient.id, amount)}
             />

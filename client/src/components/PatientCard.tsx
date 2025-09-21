@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Heart, Zap } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface Patient {
   id: string;
@@ -22,6 +23,7 @@ interface Patient {
 
 interface PatientCardProps {
   patient: Patient;
+  isDemoMode?: boolean;
   onMint?: (amount: number) => void;
   onSupport?: (amount: number) => void;
 }
@@ -38,20 +40,44 @@ const rarityColors = {
   legendary: 'bg-yellow-500'
 };
 
-export default function PatientCard({ patient, onMint, onSupport }: PatientCardProps) {
+export default function PatientCard({ patient, isDemoMode = false, onMint, onSupport }: PatientCardProps) {
   const [mintAmount, setMintAmount] = useState(10);
   const [supportAmount, setSupportAmount] = useState(5);
+  const { toast } = useToast();
   
   const progressPercentage = (patient.raisedUsd / patient.targetUsd) * 100;
 
   const handleMint = () => {
-    console.log(`Mint triggered for ${patient.name} with amount $${mintAmount}`);
-    onMint?.(mintAmount);
+    if (!isDemoMode) {
+      console.log(`Mint triggered for ${patient.name} with amount $${mintAmount}`);
+      onMint?.(mintAmount);
+      return;
+    }
+    
+    // Demo mode result
+    const superpowers = ['Healing Touch', 'Empathy Shield', 'Hope Beacon', 'Recovery Boost', 'Comfort Aura'];
+    const randomSuperpower = superpowers[Math.floor(Math.random() * superpowers.length)];
+    
+    toast({
+      title: "NFTs Minted! (Demo)",
+      description: `Successfully minted: ${patient.name} Patient Card + ${randomSuperpower} Superpower Card for $${mintAmount}`,
+      duration: 5000,
+    });
   };
 
   const handleSupport = () => {
-    console.log(`Support triggered for ${patient.name} with amount $${supportAmount}`);
-    onSupport?.(supportAmount);
+    if (!isDemoMode) {
+      console.log(`Support triggered for ${patient.name} with amount $${supportAmount}`);
+      onSupport?.(supportAmount);
+      return;
+    }
+    
+    // Demo mode result
+    toast({
+      title: "Support Sent! (Demo)", 
+      description: `Successfully supported ${patient.name} with $${supportAmount}. You received a Hero Badge!`,
+      duration: 5000,
+    });
   };
 
   return (
@@ -128,8 +154,8 @@ export default function PatientCard({ patient, onMint, onSupport }: PatientCardP
             />
             <Button 
               onClick={handleMint}
-              disabled={mintAmount < 10}
-              className="whitespace-nowrap"
+              disabled={!isDemoMode || mintAmount < 10}
+              className={`whitespace-nowrap ${!isDemoMode ? 'opacity-50 cursor-not-allowed' : ''}`}
               data-testid={`button-mint-${patient.id}`}
             >
               Mint (2 NFTs)
@@ -157,8 +183,8 @@ export default function PatientCard({ patient, onMint, onSupport }: PatientCardP
             <Button 
               variant="outline"
               onClick={handleSupport}
-              disabled={supportAmount < 1}
-              className="whitespace-nowrap"
+              disabled={!isDemoMode || supportAmount < 1}
+              className={`whitespace-nowrap ${!isDemoMode ? 'opacity-50 cursor-not-allowed' : ''}`}
               data-testid={`button-support-${patient.id}`}
             >
               Support
