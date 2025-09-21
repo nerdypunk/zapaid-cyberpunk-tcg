@@ -10,51 +10,95 @@ import CardGrid from '@/components/CardGrid';
 import { Share, Download, Trophy, Heart, Zap } from 'lucide-react';
 
 export default function Profile() {
-  // todo: remove mock functionality - replace with real wallet data
+  // Demo profile data - would be replaced with real wallet data
   const [profile] = useState({
     wallet: 'demo-guest',
     heroScore: 245,
     totalContributed: 850,
-    missionsCompleted: 12,
-    nftsOwned: 34
+    missionsCompleted: 3,
+    nftsOwned: 6
   });
 
   const [ownedSuperpowers] = useState([
     {
       id: "s1",
-      name: "Neural Hack",
-      blurb: "Penetrate digital defenses with pure thought",
+      name: "Healing Surge",
+      blurb: "Channel regenerative energy to accelerate recovery",
       rarity: "rare" as const,
       image: "",
-      earnedDate: "2025-01-15"
+      earnedDate: "2025-01-10"
+    },
+    {
+      id: "s2", 
+      name: "Empathy Shield",
+      blurb: "Absorb emotional pain and transform it into protective energy",
+      rarity: "common" as const,
+      image: "",
+      earnedDate: "2025-01-08"
     }
   ]);
 
   const [ownedPatientCards] = useState([
     {
       id: "p1",
-      name: "Akira Chen",
-      city: "Neo Tokyo", 
-      story: "A talented cyber-engineer who needs advanced neural implant surgery.",
-      targetUsd: 50000,
+      name: "Sarah Chen",
+      city: "San Francisco, CA",
+      story: "A 28-year-old graphic designer who needs urgent heart surgery to repair a congenital valve defect that's affecting her ability to work and care for her family.",
+      targetUsd: 45000,
       raisedUsd: 12500,
-      image: "",
+      image: "@assets/generated_images/Sarah_Chen_patient_portrait_554ce5fb.png",
       rarity: "rare" as const,
       tokenId: 1,
       needSeverity: 3,
       timeWaitingDays: 45,
-      earnedDate: "2025-01-15"
+      earnedDate: "2025-01-10"
+    },
+    {
+      id: "p5",
+      name: "Emma Thompson",
+      city: "Portland, OR",
+      story: "A 32-year-old single mother who needs spinal surgery to treat a herniated disc that's preventing her from working and supporting her children.",
+      targetUsd: 35000,
+      raisedUsd: 18750,
+      image: "@assets/generated_images/Emma_Thompson_patient_portrait_e8c35cfc.png",
+      rarity: "common" as const,
+      tokenId: 5,
+      needSeverity: 2,
+      timeWaitingDays: 89,
+      earnedDate: "2025-01-08"
+    },
+    {
+      id: "p7",
+      name: "Lisa Wang",
+      city: "Seattle, WA",
+      story: "A 29-year-old nurse who was diagnosed with a brain tumor and needs immediate surgery to prevent permanent neurological damage.",
+      targetUsd: 95000,
+      raisedUsd: 13500,
+      image: "@assets/generated_images/Lisa_Wang_patient_portrait_f76c6eab.png",
+      rarity: "rare" as const,
+      tokenId: 7,
+      needSeverity: 3,
+      timeWaitingDays: 56,
+      earnedDate: "2025-01-05"
     }
   ]);
 
   const [ownedBadges] = useState([
     {
       id: "b1",
-      name: "Hero's Heart",
-      blurb: "Awarded to those who support the cause",
+      name: "First Steps",
+      blurb: "Made your first donation to support a patient in need",
       rarity: "common" as const,
       image: "",
-      earnedDate: "2025-01-15"
+      earnedDate: "2025-01-10"
+    },
+    {
+      id: "b2",
+      name: "Hope Keeper", 
+      blurb: "Supported 3 different patients with medical aid",
+      rarity: "rare" as const,
+      image: "",
+      earnedDate: "2025-01-05"
     }
   ]);
 
